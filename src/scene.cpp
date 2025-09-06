@@ -6,7 +6,7 @@
 
 
 Scene::Scene():
-    scene_init(false),
+    is_scene_init(false),
     player(nullptr) {
 
 }
@@ -32,12 +32,12 @@ void Scene::init() {
 
 
 
-    scene_init = true;
+    is_scene_init= true;
 
 }
 
 void Scene::start() {
-    if(!scene_init) {
+    if(!is_scene_init) {
         std::cerr << "[X] Scene is not initialize\n";
         return;
     }

@@ -12,7 +12,7 @@ struct Scene {
     void init();
     void start();
 
-    bool scene_init;
+    bool is_scene_init;
 
     Player* player;
 
