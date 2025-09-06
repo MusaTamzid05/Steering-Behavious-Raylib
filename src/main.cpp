@@ -1,6 +1,8 @@
-#include <iostream>
+#include "scene.h"
 
 int main(int argc, char** argv) {
-    std::cout << "Hello World !\n";
+    Scene scene;
+    scene.init();
+    scene.start();
     return 0;
 }
