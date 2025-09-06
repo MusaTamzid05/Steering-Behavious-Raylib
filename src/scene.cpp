@@ -1,5 +1,6 @@
 #include "scene.h"
 #include "consts.h"
+#include "camera.h"
 #include <iostream>
 
 
@@ -19,6 +20,7 @@ void Scene::init() {
             );
 
     SetTargetFPS(FPS);
+    MCamera::get_instance()->init((Vector3) { 0.0f, 0.3f, 0.0f});
     scene_init = true;
 
 }
@@ -29,9 +31,14 @@ void Scene::start() {
         return;
     }
 
+    MCamera* m_camera =  MCamera::get_instance();
+
     while(!WindowShouldClose()) {
         BeginDrawing();
             ClearBackground(BLACK);
+
+            BeginMode3D(m_camera->camera);
+            EndMode3D();
 
         EndDrawing();
     }
