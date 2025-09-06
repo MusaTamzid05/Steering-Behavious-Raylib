@@ -3,6 +3,8 @@
 
 #include <raylib.h>
 
+struct Player;
+
 struct Scene {
     Scene();
     virtual ~Scene();
@@ -11,6 +13,8 @@ struct Scene {
     void start();
 
     bool scene_init;
+
+    Player* player;
 
 };
 

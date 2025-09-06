@@ -29,7 +29,9 @@ void MCamera::init(const Vector3& position) {
     camera.projection = CAMERA_PERSPECTIVE;
 
     is_camera_init = true;
+}
 
 
-
+void MCamera::look_at(const Vector3& target) {
+    camera.target = target;
 }

@@ -9,6 +9,7 @@ SET(SOURCE_FILES
     src/main.cpp
     src/scene.cpp
     src/camera.cpp
+    src/player.cpp
     )
 
 

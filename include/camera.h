@@ -12,6 +12,7 @@ class MCamera {
 
         bool is_camera_init;
         void init(const Vector3& position);
+        void look_at(const Vector3& target);
 
         Camera camera;
 
