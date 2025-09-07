@@ -11,6 +11,7 @@ SET(SOURCE_FILES
     src/camera.cpp
     src/player.cpp
     src/state.cpp
+    src/state_machine.cpp
     )
 
 
