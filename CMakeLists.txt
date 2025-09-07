@@ -10,6 +10,7 @@ SET(SOURCE_FILES
     src/scene.cpp
     src/camera.cpp
     src/player.cpp
+    src/state.cpp
     )
 
 
