@@ -15,6 +15,9 @@ struct State {
     virtual void on_execute(float delta_time) = 0;
     virtual void on_exit() = 0;
 
+
+    virtual void render() = 0;
+
     Type type;
 
 };

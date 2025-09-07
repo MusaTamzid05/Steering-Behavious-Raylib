@@ -12,6 +12,7 @@ SET(SOURCE_FILES
     src/player.cpp
     src/state.cpp
     src/state_machine.cpp
+    src/player_states.cpp
     )
 
 

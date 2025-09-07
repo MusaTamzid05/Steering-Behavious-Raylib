@@ -49,6 +49,7 @@ void Scene::start() {
             ClearBackground(BLACK);
 
             BeginMode3D(m_camera->camera);
+                player->update(GetFPS());
                 player->render();
                 DrawGrid(30, 2.0f);
             EndMode3D();
