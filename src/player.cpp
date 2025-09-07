@@ -42,7 +42,7 @@ void Player::init(const Vector3& position) {
     current_anim_frame = 0;
     m_state_machine = new StateMachine();
     m_state_machine->change_state(
-            new PlayerStates::IdleState(this)
+            new PlayerStates::RunState(this)
             );
 
 

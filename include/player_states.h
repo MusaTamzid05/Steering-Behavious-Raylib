@@ -32,6 +32,20 @@ namespace PlayerStates {
         Player* player;
 
     };
+
+
+    struct RunState : State {
+        RunState(Player* player);
+        virtual ~RunState();
+
+        void on_enter();
+        void on_execute(float delta_time);
+        void on_exit();
+        void render();
+
+        Player* player;
+
+    };
 }
 
 

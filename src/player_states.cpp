@@ -62,4 +62,35 @@ namespace PlayerStates {
         player->draw_model();
     }
 
+
+    RunState::RunState(Player* player):
+        State(State::Type::Run), 
+        player(player) {
+
+    }
+
+    RunState::~RunState() {
+
+    }
+
+    void RunState::on_enter() {
+        player->set_animation(Player::AnimationType::Run);
+
+    }
+
+
+    void RunState::on_execute(float delta_time) {
+        player->update_animation();
+
+    }
+
+    void RunState::on_exit() {
+
+    }
+
+    void RunState::render() {
+        player->draw_model();
+    }
+
+
 }
