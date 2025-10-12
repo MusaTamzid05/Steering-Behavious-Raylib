@@ -2,7 +2,9 @@
 #include "consts.h"
 #include "camera.h"
 #include "player.h"
+#include "state_machine.h"
 #include <iostream>
+#include "game_states.h"
 
 
 Scene::Scene():
@@ -13,6 +15,7 @@ Scene::Scene():
 
 Scene::~Scene() {
     delete player;
+    delete m_state_machine;
     CloseWindow();
 }
 
@@ -30,6 +33,9 @@ void Scene::init() {
     player->init((Vector3) { 0.0f, 0.0f, -6.0f});
     MCamera::get_instance()->look_at(player->position);
 
+    m_state_machine = new StateMachine();
+    m_state_machine->change_state(new GameStates::PauseState(this));
+
 
 
     is_scene_init= true;
@@ -42,18 +48,12 @@ void Scene::start() {
         return;
     }
 
-    MCamera* m_camera =  MCamera::get_instance();
 
     while(!WindowShouldClose()) {
+        m_state_machine->m_current_state->on_execute(GetFrameTime());
         BeginDrawing();
             ClearBackground(BLACK);
-
-            BeginMode3D(m_camera->camera);
-                player->update(GetFPS());
-                player->render();
-                DrawGrid(30, 2.0f);
-            EndMode3D();
-
+            m_state_machine->m_current_state->render();
         EndDrawing();
     }
 }

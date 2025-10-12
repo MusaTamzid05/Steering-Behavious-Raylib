@@ -4,6 +4,7 @@
 #include <raylib.h>
 
 struct Player;
+struct StateMachine;
 
 struct Scene {
     Scene();
@@ -15,6 +16,7 @@ struct Scene {
     bool is_scene_init;
 
     Player* player;
+    StateMachine* m_state_machine;
 
 };
 
