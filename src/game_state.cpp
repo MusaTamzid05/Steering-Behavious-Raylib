@@ -27,7 +27,6 @@ namespace GameStates {
 
     void GameState::render() {
         BeginMode3D(camera_instance->camera);
-            player->update(GetFPS());
             player->render();
             DrawGrid(30, 2.0f);
         EndMode3D();
@@ -80,12 +79,39 @@ namespace GameStates {
 
         if(IsKeyPressed(KEY_ENTER)) 
             scene->m_state_machine->change_state(
-                    new PauseState(scene));
+                    new RunState(scene));
 
 
     }
 
     void IdleState::on_exit() {
+
+    }
+    
+    RunState::RunState(Scene* scene):
+        GameState(scene, State::Type::Run, "Run State") {}
+
+
+    RunState::~RunState() {}
+
+    void RunState::on_enter() {
+        player->m_state_machine->change_state(
+                new PlayerStates::RunState(player));
+
+    }
+    
+    void RunState::on_execute(float delta_time) {
+        player->m_state_machine->m_current_state->on_execute(delta_time);
+
+        if(IsKeyPressed(KEY_ENTER)) 
+            scene->m_state_machine->change_state(
+                    new PauseState(scene));
+
+        
+
+    }
+
+    void RunState::on_exit() {
 
     }
     

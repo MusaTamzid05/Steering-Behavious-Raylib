@@ -53,6 +53,16 @@ namespace GameStates {
 
     };
 
+    struct RunState : GameState {
+        RunState(Scene* scene);
+        virtual ~RunState();
+
+        void on_enter();
+        void on_execute(float delta_time);
+        void on_exit();
+
+    };
+
 }
 
 
