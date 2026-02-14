@@ -6,7 +6,8 @@
 
 Player::Player():
     is_player_init(false),
-    m_state_machine(nullptr) {
+    m_state_machine(nullptr),
+    yaw(0.0f) {
 
     }
 
@@ -20,16 +21,9 @@ void Player::init(const Vector3& position) {
     model = LoadModel(PLAYER_MODEL_PATH.c_str());
 
     // this is because the way the model
-    // was saved with blender
-    //
+    // was saved in blender
 
-    model.transform = MatrixRotateXYZ (
-            (Vector3) {
-                       DEG2RAD * 90,
-                       DEG2RAD * 0,
-                       DEG2RAD * 0
-                     }
-            );
+    model.transform = MatrixRotateX(DEG2RAD * 90);
 
     is_player_init = true;
 
@@ -68,10 +62,16 @@ void Player::update_animation() {
 }
 
 void Player::draw_model() {
-    DrawModel(
+    DrawModelEx(
             model,
             position,
-            0.01f, // again the way the model was save !!
+            (Vector3) { 0 , 1, 0},
+            RAD2DEG * yaw,
+            (Vector3) {
+              PLAYER_DEFAULT_SCALE,
+              PLAYER_DEFAULT_SCALE,
+              PLAYER_DEFAULT_SCALE
+            },
             WHITE
             );
 

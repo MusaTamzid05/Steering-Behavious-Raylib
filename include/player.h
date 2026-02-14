@@ -38,6 +38,8 @@ struct Player {
 
     StateMachine* m_state_machine;
 
+    float yaw;
+
 };
 
 #endif
