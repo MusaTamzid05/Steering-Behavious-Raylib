@@ -14,6 +14,7 @@ SET(SOURCE_FILES
     src/state_machine.cpp
     src/player_states.cpp
     src/game_state.cpp
+    src/ball.cpp
     )
 
 

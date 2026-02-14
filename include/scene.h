@@ -5,6 +5,7 @@
 
 struct Player;
 struct StateMachine;
+struct Ball;
 
 struct Scene {
     Scene();
@@ -17,6 +18,8 @@ struct Scene {
 
     Player* player;
     StateMachine* m_state_machine;
+
+    Ball* ball;
 
 };
 

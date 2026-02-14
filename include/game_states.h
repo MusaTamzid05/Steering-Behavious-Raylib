@@ -6,6 +6,7 @@
 struct Scene;
 struct Player;
 class MCamera;
+struct Ball;
 
 
 namespace GameStates {
@@ -25,6 +26,7 @@ namespace GameStates {
 
         Scene* scene;
         Player* player;
+        Ball* ball;
         MCamera* camera_instance;
 
         std::string state_render_text;

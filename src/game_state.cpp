@@ -4,6 +4,7 @@
 #include "player.h"
 #include "state_machine.h"
 #include "camera.h"
+#include "ball.h"
 
 
 
@@ -16,6 +17,7 @@ namespace GameStates {
         scene(scene),
         State(type),
         player(scene->player),
+        ball(scene->ball),
         camera_instance(MCamera::get_instance()),
         state_render_text(state_render_text) {
 
@@ -28,6 +30,7 @@ namespace GameStates {
     void GameState::render() {
         BeginMode3D(camera_instance->camera);
             player->render();
+            ball->render();
             DrawGrid(30, 2.0f);
         EndMode3D();
         DrawText(state_render_text.c_str(), 10, 20, 20, RED);

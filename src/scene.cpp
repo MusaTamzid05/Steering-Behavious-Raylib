@@ -5,6 +5,7 @@
 #include "state_machine.h"
 #include <iostream>
 #include "game_states.h"
+#include "ball.h"
 
 
 Scene::Scene():
@@ -27,7 +28,11 @@ void Scene::init() {
             );
 
     SetTargetFPS(FPS);
-    MCamera::get_instance()->init((Vector3) { 0.0f, 3.0f, 0.0f});
+    MCamera::get_instance()->init((Vector3) { 0.0f, 3.0f, 6.0f});
+
+    ball = new Ball();
+    ball->init((Vector3) { 3.0f, 0.0f, -6.0f});
+
 
     player = new Player();
     player->init((Vector3) { 0.0f, 0.0f, -6.0f});
