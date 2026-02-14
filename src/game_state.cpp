@@ -80,6 +80,7 @@ namespace GameStates {
     
     void IdleState::on_execute(float delta_time) {
         player->m_state_machine->m_current_state->on_execute(delta_time);
+        ball->update(delta_time);
 
         if(IsKeyPressed(KEY_ENTER)) 
             scene->m_state_machine->change_state(
@@ -106,6 +107,7 @@ namespace GameStates {
     
     void RunState::on_execute(float delta_time) {
         player->m_state_machine->m_current_state->on_execute(delta_time);
+        ball->update(delta_time);
 
         if(IsKeyPressed(KEY_ENTER)) 
             scene->m_state_machine->change_state(

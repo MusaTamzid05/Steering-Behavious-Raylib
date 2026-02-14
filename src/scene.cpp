@@ -35,7 +35,10 @@ void Scene::init() {
 
 
     player = new Player();
-    player->init((Vector3) { 0.0f, 0.0f, -6.0f});
+    player->init(
+            (Vector3) { 0.0f, 0.0f, -6.0f},
+            ball
+            );
     MCamera::get_instance()->look_at(player->position);
 
     m_state_machine = new StateMachine();

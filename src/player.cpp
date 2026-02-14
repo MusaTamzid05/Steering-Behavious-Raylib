@@ -3,6 +3,7 @@
 #include "state_machine.h"
 #include "player_states.h"
 #include <raymath.h>
+#include "ball.h"
 
 Player::Player():
     is_player_init(false),
@@ -16,9 +17,10 @@ Player::~Player() {
     delete m_state_machine;
 }
 
-void Player::init(const Vector3& position) {
+void Player::init(const Vector3& position, Ball* ball) {
     this->position = position;
     model = LoadModel(PLAYER_MODEL_PATH.c_str());
+    this->ball = ball;
 
     // this is because the way the model
     // was saved in blender
@@ -78,3 +80,17 @@ void Player::draw_model() {
 }
 
 
+void Player::look_at(const Vector3& target) {
+    Vector3 dir = Vector3Subtract(target, position);
+
+    if(Vector3Length(dir) > 0.001) {
+        dir = Vector3Normalize(dir);
+        yaw = atan2(dir.x, dir.z);
+    }
+}
+
+
+void Player::look_at_ball() {
+    look_at(ball->position);
+
+}

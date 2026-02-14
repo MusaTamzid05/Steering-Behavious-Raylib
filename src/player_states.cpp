@@ -21,6 +21,7 @@ namespace PlayerStates {
 
     void PauseState::on_execute(float delta_time) {
         player->update_animation();
+        player->look_at_ball();
 
     }
 
@@ -51,6 +52,7 @@ namespace PlayerStates {
 
     void IdleState::on_execute(float delta_time) {
         player->update_animation();
+        player->look_at_ball();
 
     }
 
@@ -81,6 +83,7 @@ namespace PlayerStates {
 
     void RunState::on_execute(float delta_time) {
         player->update_animation();
+        player->look_at_ball();
 
     }
 

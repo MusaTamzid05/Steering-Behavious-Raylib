@@ -4,6 +4,7 @@
 #include <raylib.h>
 
 struct StateMachine;
+struct Ball;
 
 struct Player {
 
@@ -16,7 +17,7 @@ struct Player {
     Player();
     virtual ~Player();
 
-    void init(const Vector3& position);
+    void init(const Vector3& position, Ball* ball);
     void render();
     void update(float delta_time);
 
@@ -25,8 +26,12 @@ struct Player {
     void update_animation();
 
     void draw_model();
+    void look_at(const Vector3& target);
+    void look_at_ball();
 
     Vector3 position;
+    float yaw;
+
     Model model;
 
     bool is_player_init;
@@ -38,7 +43,10 @@ struct Player {
 
     StateMachine* m_state_machine;
 
-    float yaw;
+    Ball* ball;
+
+
+
 
 };
 
