@@ -45,19 +45,10 @@ namespace GameStates {
     };
 
 
-    struct IdleState : GameState {
-        IdleState(Scene* scene);
-        virtual ~IdleState();
 
-        void on_enter();
-        void on_execute(float delta_time);
-        void on_exit();
-
-    };
-
-    struct RunState : GameState {
-        RunState(Scene* scene);
-        virtual ~RunState();
+    struct PlayState : GameState {
+        PlayState(Scene* scene);
+        virtual ~PlayState();
 
         void on_enter();
         void on_execute(float delta_time);

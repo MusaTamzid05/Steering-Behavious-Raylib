@@ -56,7 +56,7 @@ namespace GameStates {
 
         if(IsKeyPressed(KEY_ENTER)) 
             scene->m_state_machine->change_state(
-                    new IdleState(scene));
+                    new PlayState(scene));
 
         
 
@@ -65,47 +65,21 @@ namespace GameStates {
     void PauseState::on_exit() {
 
     }
-    
-    IdleState::IdleState(Scene* scene):
-        GameState(scene, State::Type::Idle, "Idle State") {}
 
 
-    IdleState::~IdleState() {}
+    PlayState::PlayState(Scene* scene):
+        GameState(scene, State::Type::Run, "Play State") {}
 
-    void IdleState::on_enter() {
+
+    PlayState::~PlayState() {}
+
+    void PlayState::on_enter() {
         player->m_state_machine->change_state(
                 new PlayerStates::IdleState(player));
 
     }
     
-    void IdleState::on_execute(float delta_time) {
-        player->m_state_machine->m_current_state->on_execute(delta_time);
-        ball->update(delta_time);
-
-        if(IsKeyPressed(KEY_ENTER)) 
-            scene->m_state_machine->change_state(
-                    new RunState(scene));
-
-
-    }
-
-    void IdleState::on_exit() {
-
-    }
-    
-    RunState::RunState(Scene* scene):
-        GameState(scene, State::Type::Run, "Run State") {}
-
-
-    RunState::~RunState() {}
-
-    void RunState::on_enter() {
-        player->m_state_machine->change_state(
-                new PlayerStates::RunState(player));
-
-    }
-    
-    void RunState::on_execute(float delta_time) {
+    void PlayState::on_execute(float delta_time) {
         player->m_state_machine->m_current_state->on_execute(delta_time);
         ball->update(delta_time);
 
@@ -113,11 +87,20 @@ namespace GameStates {
             scene->m_state_machine->change_state(
                     new PauseState(scene));
 
+
+        if(IsKeyPressed(KEY_R)) 
+            player->m_state_machine->change_state(
+                    new PlayerStates::RunState(player));
+
+        else if(IsKeyPressed(KEY_I)) 
+            player->m_state_machine->change_state(
+                    new PlayerStates::IdleState(player));
+
         
 
     }
 
-    void RunState::on_exit() {
+    void PlayState::on_exit() {
 
     }
     
