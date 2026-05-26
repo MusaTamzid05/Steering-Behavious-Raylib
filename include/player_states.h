@@ -6,7 +6,16 @@
 struct Player;
 
 namespace PlayerStates {
-    struct PauseState : State {
+
+    struct BaseState : State {
+        BaseState(const  Type& type, Player* player);
+        virtual ~BaseState();
+
+
+        Player* player;
+
+    };
+    struct PauseState : BaseState {
         PauseState(Player* player);
         virtual ~PauseState();
 
@@ -15,12 +24,10 @@ namespace PlayerStates {
         void on_exit();
         void render();
 
-        Player* player;
-
     };
 
 
-    struct IdleState : State {
+    struct IdleState : BaseState {
         IdleState(Player* player);
         virtual ~IdleState();
 
@@ -29,12 +36,11 @@ namespace PlayerStates {
         void on_exit();
         void render();
 
-        Player* player;
 
     };
 
 
-    struct RunState : State {
+    struct RunState : BaseState {
         RunState(Player* player);
         virtual ~RunState();
 
@@ -43,7 +49,6 @@ namespace PlayerStates {
         void on_exit();
         void render();
 
-        Player* player;
 
     };
 }

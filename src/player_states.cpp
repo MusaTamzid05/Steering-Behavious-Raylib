@@ -3,9 +3,20 @@
 
 
 namespace PlayerStates {
-    PauseState::PauseState(Player* player):
-        State(State::Type::Pause), 
+
+    BaseState::BaseState( const Type& type, Player* player):
+        State(type),
         player(player) {
+
+        }
+
+    BaseState::~BaseState() {
+
+    }
+
+
+    PauseState::PauseState(Player* player):
+        BaseState(State::Type::Pause, player) {
 
     }
 
@@ -35,8 +46,7 @@ namespace PlayerStates {
 
 
     IdleState::IdleState(Player* player):
-        State(State::Type::Idle), 
-        player(player) {
+        BaseState(State::Type::Idle, player) {
 
     }
 
@@ -66,8 +76,7 @@ namespace PlayerStates {
 
 
     RunState::RunState(Player* player):
-        State(State::Type::Run), 
-        player(player) {
+        BaseState(State::Type::Run, player) {
 
     }
 
