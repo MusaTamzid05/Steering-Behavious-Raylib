@@ -8,7 +8,8 @@ struct State {
         Idle,
 
         // Player states, will refactor this later i guess !
-        Seek
+        Seek,
+        Arrive
     };
 
     State(const Type& type);

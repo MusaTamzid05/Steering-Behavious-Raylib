@@ -100,6 +100,10 @@ namespace GameStates {
             player->m_state_machine->change_state(
                     new PlayerStates::SeekState(player, ball));
 
+        else if(IsKeyPressed(KEY_A)) 
+            player->m_state_machine->change_state(
+                    new PlayerStates::ArriveState(player, ball));
+
         
 
     }

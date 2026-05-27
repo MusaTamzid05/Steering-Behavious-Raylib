@@ -159,4 +159,74 @@ namespace PlayerStates {
     }
 
 
+    ArriveState::ArriveState(Player* player, Ball* ball):
+        BaseState(State::Type::Run, player), ball(ball) {
+
+    }
+
+    ArriveState::~ArriveState() {
+
+    }
+
+    void ArriveState::on_enter() {
+        player->set_animation(Player::AnimationType::Run);
+
+    }
+
+
+    void ArriveState::on_execute(float delta_time) {
+        player->update_animation();
+        player->look_at_ball();
+
+        Vector3 src_pos = player->position;
+        Vector3 target_pos = ball->position;
+        Vector3 velocity = player->kinemmatic.velocity;
+        Vector3 acceleration = player->kinemmatic.acceleration;
+
+        Vector3 desired = Vector3Subtract(target_pos, src_pos);
+        float distance = Vector3Length(desired);
+
+        desired = Vector3Normalize(desired);
+
+        if(distance <= PLAYER_ARRIVE_DISTANCE) {
+            // basically map the speed with
+            // the limit we have set for the
+            // arrive.
+            //
+            float remap_speed = Remap(
+                    distance,
+                    0.0f,
+                    PLAYER_ARRIVE_DISTANCE,
+                    0.0f,
+                    PLAYER_MAX_SPEED
+                    );
+            desired = Vector3Scale(desired, remap_speed);
+
+        } else {
+            desired = Vector3Scale(desired, PLAYER_MAX_SPEED);
+        }
+
+        Vector3 steer = Vector3Subtract(desired, velocity);
+        steer = Vector3ClampValue(
+                steer,
+                0.0f,
+                PLAYER_MAX_FORCE
+                );
+
+        acceleration = Vector3Add(acceleration, steer);
+        player->kinemmatic.acceleration = acceleration;
+        player->update_movement();
+
+
+    }
+
+    void ArriveState::on_exit() {
+
+    }
+
+    void ArriveState::render() {
+        player->draw_model();
+    }
+
+
 }

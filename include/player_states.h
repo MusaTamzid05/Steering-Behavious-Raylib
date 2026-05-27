@@ -67,6 +67,21 @@ namespace PlayerStates {
 
 
     };
+
+
+    struct ArriveState : BaseState {
+        ArriveState(Player* player, Ball* ball);
+        virtual ~ArriveState();
+
+        void on_enter();
+        void on_execute(float delta_time);
+        void on_exit();
+        void render();
+
+        Ball* ball;
+
+
+    };
 }
 
 

@@ -15,4 +15,7 @@ const float PLAYER_DEFAULT_SCALE = 0.01f;
 const float PLAYER_MAX_SPEED = 0.1f;
 const float PLAYER_MAX_FORCE = 0.1f;
 
+
+const float PLAYER_ARRIVE_DISTANCE = 5.0f;
+
 #endif
