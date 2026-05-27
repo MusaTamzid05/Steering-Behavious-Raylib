@@ -2,6 +2,7 @@
 #define PLAYER_H
 
 #include <raylib.h>
+#include "kinematic.h"
 
 struct StateMachine;
 struct Ball;
@@ -28,6 +29,7 @@ struct Player {
     void draw_model();
     void look_at(const Vector3& target);
     void look_at_ball();
+    void update_movement();
 
     Vector3 position;
     float yaw;
@@ -44,6 +46,7 @@ struct Player {
     StateMachine* m_state_machine;
 
     Ball* ball;
+    Kinematic kinemmatic;
 
 
 

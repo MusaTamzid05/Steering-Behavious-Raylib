@@ -15,6 +15,7 @@ SET(SOURCE_FILES
     src/player_states.cpp
     src/game_state.cpp
     src/ball.cpp
+    src/kinematic.cpp
     )
 
 

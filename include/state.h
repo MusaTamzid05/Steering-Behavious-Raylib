@@ -5,7 +5,10 @@ struct State {
     enum Type {
         Pause = 0,
         Run,
-        Idle
+        Idle,
+
+        // Player states, will refactor this later i guess !
+        Seek
     };
 
     State(const Type& type);

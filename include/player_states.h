@@ -4,6 +4,7 @@
 #include "state.h"
 
 struct Player;
+struct Ball;
 
 namespace PlayerStates {
 
@@ -48,6 +49,21 @@ namespace PlayerStates {
         void on_execute(float delta_time);
         void on_exit();
         void render();
+
+
+    };
+
+
+    struct SeekState : BaseState {
+        SeekState(Player* player, Ball* ball);
+        virtual ~SeekState();
+
+        void on_enter();
+        void on_execute(float delta_time);
+        void on_exit();
+        void render();
+
+        Ball* ball;
 
 
     };

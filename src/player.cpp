@@ -22,6 +22,11 @@ void Player::init(const Vector3& position, Ball* ball) {
     model = LoadModel(PLAYER_MODEL_PATH.c_str());
     this->ball = ball;
 
+    kinemmatic.init(
+            (Vector3) { 0.0f,  0.0f, 0.0f},
+            (Vector3) { 0.0f,  0.0f, 0.0f}
+            );
+
     // this is because the way the model
     // was saved in blender
 
@@ -87,6 +92,17 @@ void Player::look_at(const Vector3& target) {
         dir = Vector3Normalize(dir);
         yaw = atan2(dir.x, dir.z);
     }
+}
+
+void Player::update_movement() {
+    kinemmatic.velocity = Vector3Add(
+            kinemmatic.velocity,
+            kinemmatic.acceleration
+            );
+
+    position = Vector3Add(position, kinemmatic.velocity);
+    kinemmatic.acceleration = (Vector3) { 0.0f,  0.0f, 0.0f};
+
 }
 
 
