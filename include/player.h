@@ -6,6 +6,7 @@
 
 struct StateMachine;
 struct Ball;
+struct CollisionObject;
 
 struct Player : GameObject {
 
@@ -20,6 +21,7 @@ struct Player : GameObject {
 
     void init(const Vector3& position, Ball* ball);
     void render();
+    void render_collision_object();
     void update(float delta_time);
 
 
@@ -30,6 +32,7 @@ struct Player : GameObject {
     void look_at(const Vector3& target);
     void look_at_ball();
     void update_movement();
+    void update_collision(float delta_time);;
 
     float yaw;
 
@@ -46,6 +49,7 @@ struct Player : GameObject {
 
     Ball* ball;
     Kinematic kinemmatic;
+    CollisionObject* m_collision_object;
 
 
 

@@ -66,6 +66,7 @@ namespace PlayerStates {
     void IdleState::on_execute(float delta_time) {
         player->update_animation();
         player->look_at_ball();
+        player->update_collision(delta_time);;
 
     }
 
@@ -75,6 +76,7 @@ namespace PlayerStates {
 
     void IdleState::render() {
         player->draw_model();
+        player->render_collision_object();
     }
 
 
@@ -146,6 +148,7 @@ namespace PlayerStates {
         acceleration = Vector3Add(acceleration, steer);
         player->kinemmatic.acceleration = acceleration;
         player->update_movement();
+        player->update_collision(delta_time);;
 
 
     }
@@ -156,6 +159,7 @@ namespace PlayerStates {
 
     void SeekState::render() {
         player->draw_model();
+        player->render_collision_object();
     }
 
 
@@ -216,6 +220,7 @@ namespace PlayerStates {
         acceleration = Vector3Add(acceleration, steer);
         player->kinemmatic.acceleration = acceleration;
         player->update_movement();
+        player->update_collision(delta_time);;
 
 
     }
@@ -226,6 +231,7 @@ namespace PlayerStates {
 
     void ArriveState::render() {
         player->draw_model();
+        player->render_collision_object();
     }
 
 

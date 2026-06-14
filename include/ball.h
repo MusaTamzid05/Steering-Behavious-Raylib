@@ -3,6 +3,8 @@
 
 #include "game_object.h"
 
+struct CollisionObject;
+
 struct Ball : GameObject {
     Ball();
     virtual ~Ball();
@@ -11,6 +13,7 @@ struct Ball : GameObject {
 
     void render();
     void update(float delta_time);
+    CollisionObject* m_collision_object;
 
 };
 

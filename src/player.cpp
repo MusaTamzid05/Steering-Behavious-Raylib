@@ -4,6 +4,7 @@
 #include "player_states.h"
 #include <raymath.h>
 #include "ball.h"
+#include "collision_object.h"
 
 Player::Player():
     is_player_init(false),
@@ -49,11 +50,19 @@ void Player::init(const Vector3& position, Ball* ball) {
             new PlayerStates::RunState(this)
             );
 
+    m_collision_object = new CollisionObject();
+    m_collision_object->init(
+            this,
+            (Vector3) { 0.0f, 1.0f, 0.0f },
+            (Vector3) { 0.0f, 2.0f, 0.0f }
+            );
+
 
 }
 
 void Player::render() {
     m_state_machine->m_current_state->render();
+
 }
 
 void Player::update(float delta_time) {
@@ -106,4 +115,13 @@ void Player::update_movement() {
 void Player::look_at_ball() {
     look_at(ball->position);
 
+}
+
+void Player::update_collision(float delta_time) {
+    m_collision_object->update(delta_time);
+}
+
+
+void Player::render_collision_object() {
+    m_collision_object->render();
 }
