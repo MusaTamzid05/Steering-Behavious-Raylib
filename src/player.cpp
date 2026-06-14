@@ -95,13 +95,7 @@ void Player::look_at(const Vector3& target) {
 }
 
 void Player::update_movement() {
-    kinemmatic.velocity = Vector3Add(
-            kinemmatic.velocity,
-            kinemmatic.acceleration
-            );
-
-    position = Vector3Add(position, kinemmatic.velocity);
-    kinemmatic.acceleration = (Vector3) { 0.0f,  0.0f, 0.0f};
+    kinemmatic.update(position);
 
 }
 

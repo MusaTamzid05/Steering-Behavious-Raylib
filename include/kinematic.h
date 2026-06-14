@@ -12,6 +12,8 @@ struct Kinematic {
             const Vector3& acceleration
             );
 
+    void update(Vector3& position);
+
     Vector3 velocity;
     Vector3 acceleration;
 
