@@ -12,15 +12,15 @@ Ball::~Ball() {
 }
 
 void Ball::init(const Vector3& position, float scale) {
-    this->position = position;
-    this->scale = scale;
+    Vector3 scale_vec = (Vector3) { scale, scale, scale};
+    GameObject::init(position, scale_vec);
 
 }
 
 void Ball::render() {
     DrawSphereWires(
             position,
-            scale,
+            scale.x,
             10,
             10,
             GREEN
@@ -37,6 +37,4 @@ void Ball::update(float delta_time) {
     else if(IsKeyDown(KEY_W))
         position.z -= BALL_SPEED;
     else if(IsKeyDown(KEY_S))
-        position.z += BALL_SPEED;
-
-}
+        position.z += BALL_SPEED; }

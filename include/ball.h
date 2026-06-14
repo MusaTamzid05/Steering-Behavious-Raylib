@@ -1,9 +1,9 @@
 #ifndef BALL_H
 #define BALL_H
 
-#include <raylib.h>
+#include "game_object.h"
 
-struct Ball {
+struct Ball : GameObject {
     Ball();
     virtual ~Ball();
 
@@ -12,8 +12,6 @@ struct Ball {
     void render();
     void update(float delta_time);
 
-    Vector3 position;
-    float scale;
 };
 
 
