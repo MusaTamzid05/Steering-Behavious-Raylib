@@ -1,13 +1,13 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include <raylib.h>
+#include "game_object.h"
 #include "kinematic.h"
 
 struct StateMachine;
 struct Ball;
 
-struct Player {
+struct Player : GameObject {
 
     enum AnimationType {
         Idle = 0,
@@ -31,7 +31,6 @@ struct Player {
     void look_at_ball();
     void update_movement();
 
-    Vector3 position;
     float yaw;
 
     Model model;

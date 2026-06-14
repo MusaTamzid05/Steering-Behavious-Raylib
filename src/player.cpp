@@ -18,7 +18,11 @@ Player::~Player() {
 }
 
 void Player::init(const Vector3& position, Ball* ball) {
-    this->position = position;
+    GameObject::init(
+            position,
+            (Vector3) { 1.0f, 1.0f, 1.0} // just a dummy scale for now
+            );
+
     model = LoadModel(PLAYER_MODEL_PATH.c_str());
     this->ball = ball;
 
@@ -31,7 +35,6 @@ void Player::init(const Vector3& position, Ball* ball) {
     // was saved in blender
 
     model.transform = MatrixRotateX(DEG2RAD * 90);
-
     is_player_init = true;
 
     
