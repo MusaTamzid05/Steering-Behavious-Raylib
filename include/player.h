@@ -32,7 +32,7 @@ struct Player : GameObject {
     void look_at(const Vector3& target);
     void look_at_ball();
     void update_movement();
-    void update_collision(float delta_time);;
+    void update_collision(float delta_time, CollisionObject* other=nullptr);
 
     float yaw;
 

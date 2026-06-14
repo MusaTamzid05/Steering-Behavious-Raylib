@@ -148,7 +148,7 @@ namespace PlayerStates {
         acceleration = Vector3Add(acceleration, steer);
         player->kinemmatic.acceleration = acceleration;
         player->update_movement();
-        player->update_collision(delta_time);;
+        player->update_collision(delta_time, ball->m_collision_object);
 
 
     }
@@ -220,7 +220,8 @@ namespace PlayerStates {
         acceleration = Vector3Add(acceleration, steer);
         player->kinemmatic.acceleration = acceleration;
         player->update_movement();
-        player->update_collision(delta_time);;
+        player->update_collision(delta_time, ball->m_collision_object);
+
 
 
     }

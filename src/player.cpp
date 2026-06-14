@@ -117,8 +117,22 @@ void Player::look_at_ball() {
 
 }
 
-void Player::update_collision(float delta_time) {
+void Player::update_collision(float delta_time, CollisionObject* other) {
     m_collision_object->update(delta_time);
+
+    if(other == nullptr) 
+        return;
+
+    
+
+    bool has_collide = m_collision_object->check_collision_with(other);
+
+    if(has_collide)
+        m_collision_object->activate();
+    else
+        m_collision_object->deactivate();
+
+
 }
 
 

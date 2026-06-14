@@ -16,6 +16,13 @@ struct CollisionObject {
     void update(float delta_time);
     void render();
 
+
+    BoundingBox get_bounding_box() const;
+    bool check_collision_with(CollisionObject* other);
+
+    void activate(); // meaning object has collided
+    void deactivate(); // meaning object has collided
+
     GameObject* src;
 
     Vector3 position;
@@ -25,6 +32,10 @@ struct CollisionObject {
 
     Vector3 offset_pos;
     Vector3 offset_scale;
+
+    bool collide_flag;
+
+
 
 
 };
