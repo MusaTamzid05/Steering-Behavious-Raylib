@@ -18,4 +18,6 @@ const float PLAYER_MAX_FORCE = 0.1f;
 
 const float PLAYER_ARRIVE_DISTANCE = 5.0f;
 
+const float BALL_SPEED = 0.3f;
+
 #endif

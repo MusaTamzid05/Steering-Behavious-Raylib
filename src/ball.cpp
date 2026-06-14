@@ -1,4 +1,5 @@
 #include "ball.h"
+#include "consts.h"
 
 
 Ball::Ball() {
@@ -29,13 +30,13 @@ void Ball::render() {
 
 
 void Ball::update(float delta_time) {
-    if(IsKeyPressed(KEY_A))
-        position.x -= 1.0f;
-    else if(IsKeyPressed(KEY_D))
-        position.x += 1.0f;
-    else if(IsKeyPressed(KEY_W))
-        position.z -= 1.0f;
-    else if(IsKeyPressed(KEY_S))
-        position.z += 1.0f;
+    if(IsKeyDown(KEY_A))
+        position.x -= BALL_SPEED;
+    else if(IsKeyDown(KEY_D))
+        position.x += BALL_SPEED;
+    else if(IsKeyDown(KEY_W))
+        position.z -= BALL_SPEED;
+    else if(IsKeyDown(KEY_S))
+        position.z += BALL_SPEED;
 
 }
